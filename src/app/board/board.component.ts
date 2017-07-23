@@ -1,21 +1,21 @@
-import { OnInit, Injectable } from '@angular/core';
-import * as _ from 'lodash';
+import { Component, OnInit, Input } from '@angular/core';
 
-@Injectable()
-export class Board implements OnInit {
-    private size;
-    private mines;
+@Component({
+    selector: 'app-board',
+    templateUrl: './board.component.html',
+    styleUrls: ['./board.component.css']
+})
+export class BoardComponent implements OnInit {
+    @Input() private size;
+    @Input() private mines;
     private board = [];
 
-    constructor(size, mines) {
-        this.size = size;
-        this.mines = mines;
+    constructor() {
     }
 
     public ngOnInit() {
         this.generateBoard();
         this.setMines();
-        console.log('this.board');
     }
 
     private randomIndex() {
@@ -65,4 +65,5 @@ export class Board implements OnInit {
             this.board.push(row);
         }
     }
+
 }
