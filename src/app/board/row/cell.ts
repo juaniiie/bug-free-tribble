@@ -1,6 +1,7 @@
 export class Cell {
     private value: number = 0;
     private hidden: boolean = true;
+    private flagged: boolean = false;
 
     /**
      * Returns hidden value
@@ -59,4 +60,22 @@ export class Cell {
         this.hidden = true;
     }
 
+    /**
+     * Returns flagged value
+     * 
+     * @name isFlagged
+     * @returns { boolean }
+     */
+    public isFlagged(): boolean {
+        return this.flagged;
+    }
+
+    /**
+     * Toogles value of flagged
+     * 
+     * @name toogleFlag
+     */
+    public toggleFlag():void {
+        this.flagged = !this.flagged;
+    }
 }

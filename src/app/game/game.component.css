@@ -1,9 +1,13 @@
 .game-container {
     display: flex;
-    justify-content: space-between;
 }
 
 .board {
     display: flex;
     justify-content: center;
+    flex-grow: 1;
+}
+
+.controls {
+    width: 20%;
 }
