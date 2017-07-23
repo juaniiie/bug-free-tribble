@@ -1,5 +1,5 @@
 import { OnInit, Injectable } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Injectable()
 export class Board implements OnInit {
@@ -13,13 +13,16 @@ export class Board implements OnInit {
     }
 
     public ngOnInit() {
+        this.generateBoard();
+        this.setMines();
+        console.log('this.board');
     }
 
     private randomIndex() {
         return Math.floor(Math.random() * this.size);
     }
 
-    private populateAdjacentCells(x, y, callback) {
+    private modifyAdjacentCells(x, y, callback) {
         let rotation = [
             [x - 1, y - 1],
             [x - 1, y],
@@ -31,11 +34,10 @@ export class Board implements OnInit {
         ];
 
         rotation.forEach((coord) => {
-            let row = coord[0];
-            let col = coord[1];
-
-            if (this.board[row])
-        })
+            if (this.board[coord[0]] && this.board[coord[0]][coord[1]]) {
+                this.board[coord[0]][coord[1]] = callback(this.board[coord[0]][coord[1]]);
+            }
+        });
     }
 
     private setMines() {
@@ -47,6 +49,10 @@ export class Board implements OnInit {
 
             if (this.board[x][y] !== -1) {
                 this.board[x][y] = -1;
+                this.modifyAdjacentCells(x, y,
+                    (val) => {
+                        return val + 1;
+                    });
                 minesToSet--;
             }
         }

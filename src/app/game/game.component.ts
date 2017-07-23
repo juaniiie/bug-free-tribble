@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Board } from "./board/board";
 
 @Component({
     selector: 'app-game',
@@ -8,44 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GameComponent implements OnInit {
     @Input() public size = 1;
     @Input() public mines = 0;
-    private board = [];
+    private board = new Board(this.size, this.mines);
 
     constructor() {
-
     }
 
     public ngOnInit() {
 
-    }
-
-    private randomIndex() {
-        return Math.floor(Math.random() * this.size);
-    }
-
-    private populateAdjacentCells() {
-        
-    }
-
-    private setMines() {
-        let minesToSet = this.mines;
-
-        while (minesToSet > 0) {
-            let row = this.randomIndex();
-            let col = this.randomIndex();
-
-            if (this.board[row][col] !== -1) {
-                this.board[row][col] = -1;
-                minesToSet--;
-            }
-        }
-    }
-
-    private generateBoard() {
-        for (let i = 0; i < this.size; i++) {
-            let row = new Array(this.size);
-            row.fill(0);                                         
-            this.board.push(row);
-        }
     }
 
 }
