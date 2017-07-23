@@ -1,3 +1,13 @@
 <div class="game-container">
-    <app-board [size]="size" [mines]="mines"></app-board>
+    <div class="controls">
+        <button>Challenge mode</button>
+    </div>
+    <div class="board">
+        <app-board [size]="size" [mines]="mines"></app-board>
+    </div>
+    <div class="controls">
+        <div>timer</div>
+        <button>Challenge mode</button>
+        <button>reset game</button>
+    </div>
 </div>
