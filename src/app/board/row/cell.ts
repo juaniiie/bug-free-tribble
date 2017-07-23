@@ -1,7 +1,7 @@
 export class Cell {
     private value = 0;
     private hidden = true;
-    
+
     public isHidden() {
         return this.hidden;
     }

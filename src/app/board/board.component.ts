@@ -8,24 +8,51 @@ import * as _ from 'lodash';
     styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-    @Input() private size;
-    @Input() private mines;
-    private board = [];
+    @Input() private size: number;
+    @Input() private mines: number;
+    private board: any[] = [];
 
-    public ngOnInit() {
+    /**
+     * Initializes board
+     * @name ngOnInit
+     */
+    public ngOnInit(): void {
         this.generateBoard();
         this.setMines();
     }
 
-    private randomIndex() {
+    /**
+     * Generates random number from 0 to size,
+     * inclusive
+     * @name randomIndex
+     * @returns { number }
+     */
+    private randomIndex(): number {
         return Math.floor(Math.random() * this.size);
     }
 
-    private cellIsDefined(x, y) {
+    /**
+     * Checks if x and y point to defined cell
+     * in board
+     * @name cellIsDefined
+     * @param { number } x
+     * @param { number } x
+     * @returns { boolean }
+     */
+    private cellIsDefined(x, y): boolean {
         return this.board[x] && this.board[x][y];
     }
 
-    private getRotationSet(x, y) {
+    /**
+     * Returns corresponding rotation
+     * x and y values derived from coordinate
+     * passed in
+     * @name getRotationSet
+     * @param { number } x
+     * @param { number } y
+     * @returns { Set<any[]> }
+     */
+    private getRotationSet(x, y): Set<any[]> {
         return new Set([
             [x - 1, y - 1],
             [x - 1, y],
@@ -34,29 +61,40 @@ export class BoardComponent implements OnInit {
             [x, y + 1],
             [x + 1, y - 1],
             [x + 1, y],
-            [x + 1, y + 1] 
+            [x + 1, y + 1]
         ]);
     }
 
-    private modifyAdjacentCells(x, y) {
-        let rotation = this.getRotationSet(x, y);
+    /**
+     * Modifies values in the 8 cells that surround the
+     * cell identified by the passed in x and y
+     * @name modifyAdjacentCells
+     * @param { number } x
+     * @param { number } y
+     */
+    private modifyAdjacentCells(x, y): void {
+        const rotation = this.getRotationSet(x, y);
 
-        rotation.forEach((cellCoords) => {
-            let x = cellCoords[0];
-            let y = cellCoords[1];
+        rotation.forEach((cellCoords: any[]) => {
+            const i = cellCoords[0];
+            const j = cellCoords[1];
 
-            if (this.cellIsDefined(x, y) && !this.board[x][y].isMine()) {
-                this.board[x][y].incrementValueByOne();
+            if (this.cellIsDefined(i, j) && !this.board[i][j].isMine()) {
+                this.board[i][j].incrementValueByOne();
             }
         });
     }
 
-    private setMines() {
-        let minesToSet = this.mines;
+    /**
+     * Sets mines in randomized cells in board
+     * @name setMines
+     */
+    private setMines(): void {
+        let minesToSet: number = this.mines;
 
         while (minesToSet > 0) {
-            let x = this.randomIndex();
-            let y = this.randomIndex();
+            const x: number = this.randomIndex();
+            const y: number = this.randomIndex();
 
             if (!this.board[x][y].isMine()) {
                 this.board[x][y].setMine();
@@ -66,9 +104,13 @@ export class BoardComponent implements OnInit {
         }
     }
 
+    /**
+     * Generates row arrays and cells
+     * @name generateBoard
+     */
     private generateBoard() {
         for (let i = 0; i < this.size; i++) {
-            let row = [];
+            const row: any[] = [];
             for (let j = 0; j < this.size; j++) {
                 row.push(new Cell());
             }
