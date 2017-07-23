@@ -18,19 +18,21 @@ export class BoardComponent implements OnInit {
     public ngOnInit() {
         this.generateBoard();
         this.setMines();
-        console.log('this.board', this.board);
+        for (let y = 0; y < this.board.length; y++) {
+            console.log(JSON.stringify(this.board[y]));
+        }
     }
 
     private randomIndex() {
         return Math.floor(Math.random() * this.size);
     }
 
-    private coordDefined(x, y) {
+    private cellIsDefined(x, y) {
         return this.board[x] && this.board[x][y];
     }
 
-    private modifyAdjacentCells(x, y, callback) {
-        let rotation = new Set([
+    private getRotationSet(x, y) {
+        return new Set([
             [x - 1, y - 1],
             [x - 1, y],
             [x - 1, y + 1],
@@ -40,18 +42,19 @@ export class BoardComponent implements OnInit {
             [x + 1, y],
             [x + 1, y + 1] 
         ]);
+    }
 
-        // rotation.forEach((coord) => {
-        //     if (this.coordDefined(coord[0], coord[y]) && )
+    private modifyAdjacentCells(x, y) {
+        let rotation = this.getRotationSet(x, y);
 
+        _.each(rotation, (cellCoords) => {
+            let x = cellCoords[0];
+            let y = cellCoords[1];
 
-        //     console.log('coord', coord);
-        //     console.log('thisvalue', this.board[coord[0]][coord[1]]);
-        //     if (this.board[coord[0]] && this.board[coord[0]][coord[1]] && this.board[coord[0]][coord[1]] !== -1) {
-        //         console.log('thisvalue', this.board[coord[0]][coord[1]]);
-        //         this.board[coord[0]][coord[1]] = callback(this.board[coord[0]][coord[1]]);
-        //     }
-        // });
+            if (this.cellIsDefined(x, y) && !this.board[x][y].isMine()) {
+                this.board[x][y].incrementValueByOne();
+            }
+        });
     }
 
     private setMines() {
@@ -62,7 +65,8 @@ export class BoardComponent implements OnInit {
             let y = this.randomIndex();
 
             if (!this.board[x][y].isMine()) {
-                this.board[x][y].setValue(-1);
+                this.board[x][y].setMine();
+                this.modifyAdjacentCells(x, y);
                 minesToSet--;
             }
         }
@@ -70,8 +74,10 @@ export class BoardComponent implements OnInit {
 
     private generateBoard() {
         for (let i = 0; i < this.size; i++) {
-            let row = new Array(this.size);
-            row.fill(new Cell());                                         
+            let row = [];
+            for (let j = 0; j < this.size; j++) {
+                row.push(new Cell());
+            }
             this.board.push(row);
         }
     }

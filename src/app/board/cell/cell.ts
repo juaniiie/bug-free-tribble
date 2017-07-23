@@ -6,6 +6,10 @@ export class Cell {
         return this.hidden;
     }
 
+    public setMine() {
+        this.value = -1;
+    }
+
     public isMine() {
         return this.value === -1;
     }
@@ -14,8 +18,8 @@ export class Cell {
         this.hidden = false;
     }
 
-    public setValue(value) {
-        this.value = value;
+    public incrementValueByOne() {
+        this.value = this.value + 1;
     }
 
     public reset() {
