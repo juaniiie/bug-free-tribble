@@ -1,0 +1,9 @@
+.row {
+    display: flex;
+}
+
+span.cell {
+    width: 10px;
+    padding: 5px;
+    border: 1px solid black;
+}

@@ -1,3 +1,4 @@
-<div class="board" *ngFor="let row of board">
-    <div>{{row}}</div>
+<div class="board">
+    <board-row *ngFor="let row of board"
+               [cells]="row"></board-row>
 </div>

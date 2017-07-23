@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Cell } from './cell/cell';
+import { Cell } from '../board/row/cell';
 import * as _ from 'lodash';
 
 @Component({
@@ -12,15 +12,9 @@ export class BoardComponent implements OnInit {
     @Input() private mines;
     private board = [];
 
-    constructor() {
-    }
-
     public ngOnInit() {
         this.generateBoard();
         this.setMines();
-        for (let y = 0; y < this.board.length; y++) {
-            console.log(JSON.stringify(this.board[y]));
-        }
     }
 
     private randomIndex() {
@@ -47,7 +41,7 @@ export class BoardComponent implements OnInit {
     private modifyAdjacentCells(x, y) {
         let rotation = this.getRotationSet(x, y);
 
-        _.each(rotation, (cellCoords) => {
+        rotation.forEach((cellCoords) => {
             let x = cellCoords[0];
             let y = cellCoords[1];
 
