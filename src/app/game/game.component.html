@@ -1,13 +1,15 @@
 <div class="game-container">
     <div class="controls">
-        <button>Challenge mode</button>
+        <div><i class="material-icons">refresh</i>Restart</div>
+        <div><i class="material-icons">add</i>Level</div>
     </div>
     <div class="board">
         <app-board [size]="size" [mines]="mines"></app-board>
     </div>
     <div class="controls">
-        <div>timer</div>
-        <button>Challenge mode</button>
-        <button>reset game</button>
+        <div>
+            <i class="material-icons">flag</i>Flag
+        </div>
+        <div><i class="material-icons">block</i>Un-flag</div>
     </div>
 </div>
