@@ -80,7 +80,7 @@ export class BoardComponent implements OnInit {
             const j = cellCoords[1];
 
             if (this.cellIsDefined(i, j) && !this.board[i][j].isMine()) {
-                this.board[i][j].incrementValueByOne();
+                this.board[i][j].incrementValueBy(1);
             }
         });
     }

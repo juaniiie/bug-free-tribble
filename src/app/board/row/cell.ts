@@ -1,28 +1,60 @@
 export class Cell {
-    private value = 0;
-    private hidden = true;
+    private value: number = 0;
+    private hidden: boolean = true;
 
-    public isHidden() {
+    /**
+     * Returns hidden value
+     * 
+     * @name isHidden
+     * @returns { boolean }
+     */
+    public isHidden(): boolean {
         return this.hidden;
     }
 
-    public setMine() {
+    /**
+     * Sets value to -1
+     * 
+     * @name setMine
+     */
+    public setMine(): void {
         this.value = -1;
     }
 
-    public isMine() {
+    /**
+     * Returns wether value is -1
+     * 
+     * @name isMine
+     * @returns { boolean }
+     */
+    public isMine(): boolean {
         return this.value === -1;
     }
 
-    public show() {
+    /**
+     * Sets hidden value to false
+     * 
+     * @name show
+     */
+    public show(): void {
         this.hidden = false;
     }
 
-    public incrementValueByOne() {
-        this.value = this.value + 1;
+    /**
+     * Increments value by param
+     * 
+     * @name incrementValueBy
+     */
+    public incrementValueBy(num): void {
+        this.value = this.value + num;
     }
 
-    public reset() {
+    /**
+     * Resets class properties to default
+     * 
+     * @name reset
+     */
+    public reset(): void {
         this.value = 0;
         this.hidden = true;
     }
