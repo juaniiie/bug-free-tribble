@@ -1,5 +1,5 @@
 export class Cell {
-    private value: number = 0;
+    public value: number = 0;
     private hidden: boolean = true;
     private flagged: boolean = false;
 

@@ -10,7 +10,11 @@ export class RowComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
+    public ngOnInit() {
     }
+
+    public onCellClick(): void {
+        
+    } 
 
 }

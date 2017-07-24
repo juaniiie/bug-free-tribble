@@ -1,4 +1,9 @@
 <div class="row">
     <span *ngFor="let cell of cells"
-          class="cell">{{cell.value}}</span>
+          class="cell"
+          [ngClass]="{'show': !cell.isHidden()}">
+          <i *ngIf="cell.value === -1"
+             class="material-icons">wb_sunny</i>
+          <span *ngIf="cell.value !== -1">{{cell.value}}</span>
+    </span>
 </div>
