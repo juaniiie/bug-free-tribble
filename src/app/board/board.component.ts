@@ -132,7 +132,7 @@ export class BoardComponent implements OnInit {
      * Generates row arrays and cells
      * @name generateBoard
      */
-    private generateBoard() {
+    private generateBoard(): void {
         for (let i = 0; i < this.size; i++) {
             const row: any[] = [];
             for (let j = 0; j < this.size; j++) {

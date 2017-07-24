@@ -24,3 +24,7 @@ span.cell.show {
     background: transparent;
     cursor: default
 }
+
+.material-icons.mine {
+    color: 	#FF6347;
+}

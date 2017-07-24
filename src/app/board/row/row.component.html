@@ -4,7 +4,8 @@
           [ngClass]="{'show': cell.isVisible()}"
           (click)="handleCellClick(cell)">
             <span *ngIf="cell.isVisible()">  
-              <i *ngIf="cell.value === -1" class="material-icons">wb_sunny</i>
+              <i *ngIf="cell.value === -1"
+                 class="material-icons mine">wb_sunny</i>
               <span *ngIf="cell.value > 0">{{cell.value}}</span>
             </span>  
     </span>
