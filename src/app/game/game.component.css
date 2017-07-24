@@ -23,13 +23,19 @@
     flex-direction: column;
     height: 8em;
     width: 8em;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    color: #d04ed6;
+    opacity: 0.6;
+    border: 2px solid #d04ed6;
     border-radius: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 2em;
+    cursor: pointer;
+}
+
+.controls > div:hover {
+    opacity: 1;
 }
 
 .controls i.material-icons {
