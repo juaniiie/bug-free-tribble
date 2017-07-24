@@ -1,11 +1,11 @@
 <div class="row">
     <span *ngFor="let cell of cells"
           class="cell"
-          [ngClass]="{'show': !cell.isHidden()}"
+          [ngClass]="{'show': cell.isVisible()}"
           (click)="handleCellClick(cell)">
-          <span *ngIf="!cell.isHidden()">
+            <span *ngIf="cell.isVisible()">  
               <i *ngIf="cell.value === -1" class="material-icons">wb_sunny</i>
-              <span *ngIf="cell.value !== -1">{{cell.value}}</span>
-          </span>
+              <span *ngIf="cell.value > 0">{{cell.value}}</span>
+            </span>  
     </span>
 </div>

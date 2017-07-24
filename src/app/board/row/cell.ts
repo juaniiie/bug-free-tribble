@@ -1,11 +1,21 @@
 export class Cell {
     public value: number = 0;
+    public visited: boolean = false;
     private coordinates = {
         x: 0,
         y: 0
     }
-    private hidden: boolean = true;
+    private visible: boolean = false;
     private flagged: boolean = false;
+
+    /**
+     * Sets visited value to true
+     * 
+     * @name visit
+     */
+    public visit(): void {
+        this.visited = true;
+    }
 
     /**
      * Sets coordinates
@@ -30,13 +40,13 @@ export class Cell {
     }
 
     /**
-     * Returns hidden value
+     * Returns visible value
      * 
-     * @name isHidden
+     * @name isVisible
      * @returns { boolean }
      */
-    public isHidden(): boolean {
-        return this.hidden;
+    public isVisible(): boolean {
+        return this.visible;
     }
 
     /**
@@ -64,7 +74,7 @@ export class Cell {
      * @name show
      */
     public show(): void {
-        this.hidden = false;
+        this.visible = true;
     }
 
     /**
@@ -83,7 +93,7 @@ export class Cell {
      */
     public reset(): void {
         this.value = 0;
-        this.hidden = true;
+        this.visible = false;
     }
 
     /**

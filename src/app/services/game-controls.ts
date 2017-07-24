@@ -23,7 +23,6 @@ export class ControlsService {
     }
 
     public isFlagOn(): boolean {
-        console.log('flag on in cell', this.flagOn);
         return this.flagOn;
     }
 

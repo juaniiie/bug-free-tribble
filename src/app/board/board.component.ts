@@ -21,8 +21,25 @@ export class BoardComponent implements OnInit {
         this.setMines();
     }
 
-    public selectCell(coordinates): void {
-        console.log('coords', coordinates);
+    /**
+     * Handles cell selection
+     * @name handleSelectCell
+     * @param { Cell }
+    */
+    public handleSelectCell(cell: Cell): void {
+        if (!cell.visited) {
+            cell.visit();
+            cell.show();
+            if (cell.isMine()) {
+                alert('game ends');
+                return;
+            } else if (cell.value === 0) {
+                let coords: any = cell.getCoords();
+                this.modifyAdjacentCells(coords.x, coords.y, (c) => {
+                    this.handleSelectCell(c);
+                });
+            }
+        }
     }
 
     /**
@@ -75,16 +92,17 @@ export class BoardComponent implements OnInit {
      * @name modifyAdjacentCells
      * @param { number } x
      * @param { number } y
+     * @param { Function } cb
      */
-    private modifyAdjacentCells(x, y): void {
-        const rotation = this.getRotationSet(x, y);
+    private modifyAdjacentCells(x, y, cb): void {
+        let rotation = this.getRotationSet(x, y);
 
         rotation.forEach((cellCoords: any[]) => {
             const i = cellCoords[0];
             const j = cellCoords[1];
 
             if (this.cellIsDefined(i, j) && !this.board[i][j].isMine()) {
-                this.board[i][j].incrementValueBy(1);
+                cb(this.board[i][j]);
             }
         });
     }
@@ -102,7 +120,9 @@ export class BoardComponent implements OnInit {
 
             if (!this.board[x][y].isMine()) {
                 this.board[x][y].setMine();
-                this.modifyAdjacentCells(x, y);
+                this.modifyAdjacentCells(x, y, (cell) => {
+                    cell.incrementValueBy(1);
+                });
                 minesToSet--;
             }
         }

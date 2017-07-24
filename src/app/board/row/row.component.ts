@@ -25,7 +25,7 @@ export class RowComponent implements OnInit {
         } else if (this.controls.isUnFlagOn()) {
             cell.setFlag(false);
         } else {
-            this.onSelectCell.emit(cell.getCoords());
+            this.onSelectCell.emit(cell);
         }
     }
 }

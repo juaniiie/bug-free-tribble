@@ -16,6 +16,10 @@ span.cell {
     cursor: pointer;
 }
 
+span.cell > span {
+    display: flex;
+}
+
 span.cell.show {
     background: transparent;
     cursor: default
