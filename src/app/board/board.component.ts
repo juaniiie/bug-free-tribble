@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Cell } from '../board/row/cell';
+import { Cell } from '../board/row/cell/cell';
 import * as _ from 'lodash';
 
 @Component({

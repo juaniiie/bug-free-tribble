@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Cell } from './cell';
+import { Cell } from './cell/cell';
 import { ControlsService } from '../../services/game-controls';
 
 @Component({
