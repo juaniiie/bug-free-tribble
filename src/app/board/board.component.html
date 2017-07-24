@@ -1,3 +1,4 @@
 <app-board-row *ngFor="let row of board"
+            (onSelectCell)="selectCell($event)"
             [cells]="row">
 </app-board-row>

@@ -21,6 +21,10 @@ export class BoardComponent implements OnInit {
         this.setMines();
     }
 
+    public selectCell(coordinates): void {
+        console.log('coords', coordinates);
+    }
+
     /**
      * Generates random number from 0 to size,
      * inclusive
@@ -112,7 +116,9 @@ export class BoardComponent implements OnInit {
         for (let i = 0; i < this.size; i++) {
             const row: any[] = [];
             for (let j = 0; j < this.size; j++) {
-                row.push(new Cell());
+                let cell = new Cell();
+                cell.setCoords(i, j);
+                row.push(cell);
             }
             this.board.push(row);
         }

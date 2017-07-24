@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 import { BoardComponent } from './board/board.component';
 import { RowComponent } from './board/row/row.component';
+import { ControlsService } from './services/game-controls';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { RowComponent } from './board/row/row.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+      ControlsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

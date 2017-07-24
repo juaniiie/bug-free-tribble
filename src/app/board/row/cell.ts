@@ -1,7 +1,33 @@
 export class Cell {
     public value: number = 0;
+    private coordinates = {
+        x: 0,
+        y: 0
+    }
     private hidden: boolean = true;
     private flagged: boolean = false;
+
+    /**
+     * Sets coordinates
+     * 
+     * @name setCoords
+     * @param { number } x value
+     * @param { number } y value
+     */
+    public setCoords(x, y): void {
+        this.coordinates.x = x;
+        this.coordinates.y = y;
+    }
+
+    /**
+     * Gets coordinates
+     * 
+     * @name getCoords
+     * @returns { any }
+     */
+    public getCoords(): any {
+        return this.coordinates;
+    }
 
     /**
      * Returns hidden value
@@ -71,11 +97,11 @@ export class Cell {
     }
 
     /**
-     * Toogles value of flagged
+     * Sets value of flagged
      * 
-     * @name toogleFlag
+     * @name setFlag
      */
-    public toggleFlag():void {
-        this.flagged = !this.flagged;
+    public setFlag(val: boolean):void {
+        this.flagged = val;
     }
 }
