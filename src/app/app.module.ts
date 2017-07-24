@@ -6,13 +6,15 @@ import { GameComponent } from './game/game.component';
 import { BoardComponent } from './board/board.component';
 import { RowComponent } from './board/row/row.component';
 import { ControlsService } from './services/game-controls';
+import { CellColorDirective } from './board/row/color-directive/color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
     BoardComponent,
-    RowComponent
+    RowComponent,
+    CellColorDirective
   ],
   imports: [
     BrowserModule
