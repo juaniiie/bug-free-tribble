@@ -13,8 +13,10 @@ span.cell {
     margin: 0.1em;
     color: #FFFFFF;
     background: #FFFFFF;
+    cursor: pointer;
 }
 
 span.cell.show {
     background: transparent;
+    cursor: default
 }

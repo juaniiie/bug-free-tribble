@@ -19,15 +19,13 @@ export class RowComponent implements OnInit {
     public ngOnInit() {
     }
 
-    public handleCellClick(cell: Cell, index: number): void {
-        if (this.controls.isFlagOn) {
+    public handleCellClick(cell: Cell): void {
+        if (this.controls.isFlagOn()) {
             cell.setFlag(true);
-        } else if (this.controls.isUnFlagOn) {
+        } else if (this.controls.isUnFlagOn()) {
             cell.setFlag(false);
         } else {
-            console.log('emitting event');
-            this.onSelectCell.emit(cell.getCoords);
+            this.onSelectCell.emit(cell.getCoords());
         }
-
     }
 }
