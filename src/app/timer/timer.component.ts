@@ -7,10 +7,8 @@ import { GameStateService } from '../services/game-state';
     styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
-    public hour: any = '00';
-    public minute: any = '00';
-    public second: any = '00';
-    public totalMilliSeconds: number = 0;
+    public second: any = '000';
+    public totalSeconds: number = 0;
     public interval: any;
 
     constructor(private game: GameStateService) {
@@ -19,6 +17,7 @@ export class TimerComponent implements OnInit {
     public ngOnInit(): void {
         this.game.getChanges().subscribe((state) => {
             if (state === 'in_progress') {
+                this.second = '000';
                 this.resetTimer();
             } else if (state === 'end') {
                 this.stopTimer();
@@ -28,21 +27,18 @@ export class TimerComponent implements OnInit {
 
     private resetTimer(): void {
         this.interval = setInterval(() => {
-            this.totalMilliSeconds++;
-            let conversion = this.totalMilliSeconds / 1000;
-            this.second = conversion % 60;
-            conversion /= 60;
-            this.minute = conversion % 60;
-            conversion /= 60;
-            this.hour = conversion % 24;
+            this.totalSeconds++;
+            if (this.totalSeconds === 999) {
+                this.stopTimer()
+            } else {
+                let s = this.totalSeconds.toString()
+                this.second = s.length === 1 ?`00${s}` : s.length === 2 ? `0${s}` : `${s}`;
+            }
         }, 1000);
     }
 
     private stopTimer(): void {
         clearInterval(this.interval);
-        this.hour = '00';
-        this.second = '00';
-        this.minute = '00';
     }
 
 }
