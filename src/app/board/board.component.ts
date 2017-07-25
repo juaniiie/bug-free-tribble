@@ -8,7 +8,8 @@ import * as _ from 'lodash';
     styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-    @Input() private size: number;
+    @Input() private height: number;
+    @Input() private width: number;
     @Input() private mines: number;
     private board: any[] = [];
 
@@ -48,8 +49,8 @@ export class BoardComponent implements OnInit {
      * @name randomIndex
      * @returns { number }
      */
-    private randomIndex(): number {
-        return Math.floor(Math.random() * this.size);
+    private randomIndex(side): number {
+        return Math.floor(Math.random() * this[side]);
     }
 
     /**
@@ -115,8 +116,8 @@ export class BoardComponent implements OnInit {
         let minesToSet: number = this.mines;
 
         while (minesToSet > 0) {
-            const x: number = this.randomIndex();
-            const y: number = this.randomIndex();
+            const x: number = this.randomIndex('height');
+            const y: number = this.randomIndex('width');
 
             if (!this.board[x][y].isMine()) {
                 this.board[x][y].setMine();
@@ -133,9 +134,9 @@ export class BoardComponent implements OnInit {
      * @name generateBoard
      */
     private generateBoard(): void {
-        for (let i = 0; i < this.size; i++) {
+        for (let i = 0; i < this.height; i++) {
             const row: any[] = [];
-            for (let j = 0; j < this.size; j++) {
+            for (let j = 0; j < this.width; j++) {
                 let cell = new Cell();
                 cell.setCoords(i, j);
                 row.push(cell);

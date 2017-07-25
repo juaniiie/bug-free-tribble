@@ -4,7 +4,10 @@
         <div><i class="material-icons">swap_vert</i>Level</div>
     </div>
     <div class="board">
-        <app-board [size]="size" [mines]="mines"></app-board>
+        <app-board [height]="level.height"
+                   [width]="level.width"
+                   [mines]="level.mines">
+        </app-board>
     </div>
     <div class="controls">
         <div>

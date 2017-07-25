@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Cell } from './cell/cell';
-import { ControlsService } from '../../services/game-controls';
+import { GameControlsService } from '../../services/game-controls';
 
 @Component({
     selector: 'app-board-row',
@@ -10,19 +10,15 @@ import { ControlsService } from '../../services/game-controls';
 export class RowComponent implements OnInit {
     @Input() public cells = [];
     @Output() public onSelectCell: EventEmitter<any> = new EventEmitter<any>();
-    private controls: ControlsService = null;
 
-    constructor(controlsService: ControlsService) {
-        this.controls = controlsService;
+    constructor() {
     }
 
     public ngOnInit() {
     }
 
     public handleCellClick(cell: Cell): void {
-        if (this.controls.isFlagOn()) {
-            cell.setFlag(true);
-        } else if (this.controls.isUnFlagOn()) {
+        if (cell.isFlagged()) {
             cell.setFlag(false);
         } else {
             this.onSelectCell.emit(cell);
