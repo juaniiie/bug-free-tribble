@@ -7,6 +7,8 @@ import { BoardComponent } from './board/board.component';
 import { RowComponent } from './board/row/row.component';
 import { GameControlsService } from './services/game-controls';
 import { CellColorDirective } from './board/row/color-directive/color.directive';
+import { TimerComponent } from './timer/timer.component';
+import { GameStateService } from './services/game-state';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,15 @@ import { CellColorDirective } from './board/row/color-directive/color.directive'
     GameComponent,
     BoardComponent,
     RowComponent,
-    CellColorDirective
+    CellColorDirective,
+    TimerComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [
-      GameControlsService
+      GameControlsService,
+      GameStateService
   ],
   bootstrap: [AppComponent]
 })

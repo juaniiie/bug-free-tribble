@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Cell } from './cell/cell';
-import { GameControlsService } from '../../services/game-controls';
+import { GameStateService } from '../../services/game-state';
 
 @Component({
     selector: 'app-board-row',
@@ -11,15 +11,19 @@ export class RowComponent {
     @Input() public cells = [];
     @Output() public onSelectCell: EventEmitter<any> = new EventEmitter<any>();
 
+    constructor(private game: GameStateService) {
+    }
 
     public handleCellClick(event, cell): void {
-        if (event.type === 'contextmenu' || event.which === 3 || event.which === 2) {
-            event.preventDefault();
-            cell.setFlag(!cell.isFlagged());
-        } else if (event.type === 'click') {
-            if (!cell.isFlagged()) {
-                this.onSelectCell.emit(cell);
-            }
-        }    
+        if (this.game.getStatus() !== 'end') {
+            if (event.type === 'contextmenu' || event.which === 3 || event.which === 2) {
+                event.preventDefault();
+                cell.setFlag(!cell.isFlagged());
+            } else if (event.type === 'click') {
+                if (!cell.isFlagged()) {
+                    this.onSelectCell.emit(cell);
+                }
+            }  
+        }  
     }
 }

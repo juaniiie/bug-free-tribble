@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Cell } from '../board/row/cell/cell';
-import * as _ from 'lodash';
+import { Cell } from './row/cell/cell';
+import { GameStateService } from '../services/game-state';
 
 @Component({
     selector: 'app-board',
@@ -11,7 +11,11 @@ export class BoardComponent implements OnInit {
     @Input() private height: number;
     @Input() private width: number;
     @Input() private mines: number;
+    private firstClick: boolean = false;
     private board: any[] = [];
+
+    constructor(private game: GameStateService) {
+    }
 
     /**
      * Initializes board
@@ -28,11 +32,15 @@ export class BoardComponent implements OnInit {
      * @param { Cell }
     */
     public handleSelectCell(cell: Cell): void {
+        if (!this.firstClick) {
+            this.game.start();
+            this.firstClick = true;
+        } 
         if (!cell.visited) {
             cell.visit();
             cell.show();
             if (cell.isMine()) {
-                alert('game ends');
+                this.game.end();
                 return;
             } else if (cell.value === 0) {
                 let coords: any = cell.getCoords();
