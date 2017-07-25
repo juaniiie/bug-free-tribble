@@ -25,6 +25,7 @@ span.cell.show {
     cursor: default
 }
 
-.material-icons.mine {
+.material-icons.mine,
+.material-icons.flag {
     color: 	#FF6347;
 }

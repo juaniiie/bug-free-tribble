@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Cell } from './cell/cell';
 import { GameControlsService } from '../../services/game-controls';
 
@@ -7,21 +7,19 @@ import { GameControlsService } from '../../services/game-controls';
     templateUrl: './row.component.html',
     styleUrls: ['./row.component.css']
 })
-export class RowComponent implements OnInit {
+export class RowComponent {
     @Input() public cells = [];
     @Output() public onSelectCell: EventEmitter<any> = new EventEmitter<any>();
 
-    constructor() {
-    }
 
-    public ngOnInit() {
-    }
-
-    public handleCellClick(cell: Cell): void {
-        if (cell.isFlagged()) {
-            cell.setFlag(false);
-        } else {
-            this.onSelectCell.emit(cell);
-        }
+    public handleCellClick(event, cell): void {
+        if (event.type === 'contextmenu' || event.which === 3 || event.which === 2) {
+            event.preventDefault();
+            cell.setFlag(!cell.isFlagged());
+        } else if (event.type === 'click') {
+            if (!cell.isFlagged()) {
+                this.onSelectCell.emit(cell);
+            }
+        }    
     }
 }
