@@ -1,11 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { GameControlsService } from '../services/game-controls';
 import * as _ from 'lodash';
 
 @Component({
     selector: 'app-level-select',
     templateUrl: './level-select.component.html',
-    styleUrls: ['./level-select.component.css']
+    styleUrls: ['./level-select.component.css'],
+    animations: [
+        trigger('openState', [
+            state('true', style({
+                transform: 'translateY(0)',
+                height: '100%',
+                opacity: 1
+            })),
+            transition('void => true', [
+                style({
+                    transform: 'translateY(-10px)',
+                    height: '0',
+                    opacity: 0
+                }),
+                animate('200ms ease')
+            ]),
+            transition('true => void', [
+                animate('200ms ease', style({
+                    transform: 'translateY(-10px)',
+                    height: '0',
+                    opacity: 0
+                }))
+            ])
+        ])
+    ]
 })
 export class LevelSelectComponent implements OnInit {
     public current: string;

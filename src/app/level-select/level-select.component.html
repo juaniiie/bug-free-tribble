@@ -3,7 +3,7 @@
         <span>{{current}}</span>
         <i class="material-icons">keyboard_arrow_down</i>
     </div>
-    <div *ngIf="showOptions"
+    <div *ngIf="showOptions" [@openState]="showOptions ? 'true': 'false'"
           class="dropdown">
         <table class="options">
             <tr class="header">
