@@ -1,16 +1,18 @@
 <div class="row">
     <span *ngFor="let cell of cells"
           class="cell"
-          [ngClass]="{'show': cell.isVisible()}"
+          [ngClass]="{'show': cell.isVisible(), 'doom': cell.isDoom}"
           (contextmenu)="handleCellClick($event, cell)"
           (click)="handleCellClick($event, cell)">
-            <span *ngIf="cell.isVisible()" cellColor [value]="cell.value">  
-              <i *ngIf="cell.value === -1"
-                 class="material-icons">wb_sunny</i>
-              <span *ngIf="cell.value > 0">{{cell.value}}</span>
+            <span *ngIf="cell.isVisible()" cellColor [value]="cell.value">
+                <span class="icon-stack" *ngIf="cell.value === -1">
+                    <i class="material-icons">wb_sunny</i>
+                    <i *ngIf="cell.isFlagged()" class="material-icons clear">clear</i>
+                </span>
+                <span *ngIf="cell.value > 0">{{cell.value}}</span>
             </span>
-            <span *ngIf="cell.isFlagged()">
+            <span *ngIf="cell.isFlagged() && !cell.isVisible()">
                 <i class="material-icons flag">flag</i>
-            </span>  
+            </span>
     </span>
 </div>

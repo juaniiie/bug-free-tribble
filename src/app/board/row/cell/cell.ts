@@ -1,6 +1,7 @@
 export class Cell {
     public value: number = 0;
     public visited: boolean = false;
+    public isDoom: boolean = false;
     private coordinates = {
         x: 0,
         y: 0
@@ -10,7 +11,6 @@ export class Cell {
 
     /**
      * Sets visited value to true
-     * 
      * @name visit
      */
     public visit(): void {
@@ -19,7 +19,6 @@ export class Cell {
 
     /**
      * Sets coordinates
-     * 
      * @name setCoords
      * @param { number } x value
      * @param { number } y value
@@ -31,7 +30,6 @@ export class Cell {
 
     /**
      * Gets coordinates
-     * 
      * @name getCoords
      * @returns { any }
      */
@@ -41,7 +39,6 @@ export class Cell {
 
     /**
      * Returns visible value
-     * 
      * @name isVisible
      * @returns { boolean }
      */
@@ -51,7 +48,6 @@ export class Cell {
 
     /**
      * Sets value to -1
-     * 
      * @name setMine
      */
     public setMine(): void {
@@ -60,7 +56,6 @@ export class Cell {
 
     /**
      * Returns wether value is -1
-     * 
      * @name isMine
      * @returns { boolean }
      */
@@ -70,7 +65,6 @@ export class Cell {
 
     /**
      * Sets hidden value to false
-     * 
      * @name show
      */
     public show(): void {
@@ -79,7 +73,6 @@ export class Cell {
 
     /**
      * Increments value by param
-     * 
      * @name incrementValueBy
      */
     public incrementValueBy(num): void {
@@ -88,7 +81,6 @@ export class Cell {
 
     /**
      * Resets class properties to default
-     * 
      * @name reset
      */
     public reset(): void {
@@ -98,7 +90,6 @@ export class Cell {
 
     /**
      * Returns flagged value
-     * 
      * @name isFlagged
      * @returns { boolean }
      */
@@ -108,10 +99,16 @@ export class Cell {
 
     /**
      * Sets value of flagged
-     * 
      * @name setFlag
      */
     public setFlag(val: boolean):void {
         this.flagged = val;
+    }
+
+    /**
+     * Sets doom value
+     */
+    public markDoom(): void {
+        this.isDoom = true;
     }
 }

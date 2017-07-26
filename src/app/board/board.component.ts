@@ -13,6 +13,7 @@ export class BoardComponent {
     @Input() private mines: number;
     private firstClick: boolean = false;
     private board: any[] = [];
+    private minesLocations: Set<any> = new Set();
 
     constructor(private game: GameStateService) {
     }
@@ -44,13 +45,14 @@ export class BoardComponent {
         if (!this.firstClick) {
             this.game.start();
             this.firstClick = true;
-        } 
-        if (!cell.visited) {
+        }
+        if (!cell.visited && !cell.isFlagged()) {
             cell.visit();
             cell.show();
             if (cell.isMine()) {
+                cell.markDoom();
+                this.revealAllMines();
                 this.game.end();
-                return;
             } else if (cell.value === 0) {
                 let coords: any = cell.getCoords();
                 this.modifyAdjacentCells(coords.x, coords.y, (c) => {
@@ -58,6 +60,16 @@ export class BoardComponent {
                 });
             }
         }
+    }
+
+    /**
+     * Reveals all mines
+     * @name revealAllMines
+     */
+    private revealAllMines(): void {
+        this.minesLocations.forEach((loc) => {
+            this.board[loc.x][loc.y].show();
+        });
     }
 
     /**
@@ -137,6 +149,7 @@ export class BoardComponent {
             const y: number = this.randomIndex('width');
 
             if (!this.board[x][y].isMine()) {
+                this.minesLocations.add({x: x, y: y});
                 this.board[x][y].setMine();
                 this.modifyAdjacentCells(x, y, (cell) => {
                     cell.incrementValueBy(1);

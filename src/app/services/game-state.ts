@@ -23,5 +23,4 @@ export class GameStateService {
         this.gameStatus = 'end';
         this.gameChange.next(this.gameStatus);
     }
-    
 }
