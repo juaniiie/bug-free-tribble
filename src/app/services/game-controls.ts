@@ -30,7 +30,7 @@ export class GameControlsService {
         }
     }
     private level: string = 'beginner';
-    private levelChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.levels[this.level]);
+    private levelChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.level);
 
     public getLevelChanges(): BehaviorSubject<any> {
         return this.levelChanges;
@@ -47,7 +47,11 @@ export class GameControlsService {
         this.levelChanges.next(this.level);
     }
 
-    public getCurrentLevel(): string {
-        return this.level;
+    // public getCurrentLevel(): string {
+    //     return this.level;
+    // }
+
+    public getLevels(): any {
+        return this.levels;
     }
 }

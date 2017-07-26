@@ -7,7 +7,8 @@ import { GameControlsService } from '../services/game-controls';
     styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-    public level: any;
+    public level: string;
+    public levels: any = this.controls.getLevels();
     public size = 9;
     public mines = 10;
 

@@ -1,18 +1,20 @@
 <div class='select-container'>
     <div class="select" (click)="toggleOptionsMenu()">
-        <span>{{current | uppercase}}</span>
-        <i class="material-icons">arrow_drop_down</i>
+        <span>{{current}}</span>
+        <i class="material-icons">keyboard_arrow_down</i>
     </div>
-    <ul *ngIf="showOptions" class="level-options">
-        <li>
-            <span class="title"></span>
-            <span>h</span>
-            <span>w</span>
-            <span><i class="material-icons">wb_sunny</i></span>
-        </li>
-        <li>
-            <span>Beginner</span>
-            <span></span>
-        </li>
-    </ul>
+        <table *ngIf="showOptions" class="options">
+            <tr class="header">
+                <th>level</th>
+                <th>h</th>
+                <th>w</th>
+                <th>mines</th>
+            </tr>
+            <tr *ngFor="let level of levelKeys">
+                <td>{{level}}</td>
+                <td>{{levels[level].height}}</td>
+                <td>{{levels[level].width}}</td>
+                <td>{{levels[level].mines}}</td>
+            </tr>
+        </table>
 </div>

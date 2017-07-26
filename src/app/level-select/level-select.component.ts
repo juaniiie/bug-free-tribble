@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameControlsService } from '../services/game-controls';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'app-level-select',
@@ -7,16 +8,19 @@ import { GameControlsService } from '../services/game-controls';
     styleUrls: ['./level-select.component.css']
 })
 export class LevelSelectComponent implements OnInit {
-    public current: string = this.control.getCurrentLevel();
+    public current: string;
     public showOptions: boolean = false;
-    private options: any;
+    public levels: any = this.control.getLevels();
+    public levelKeys: any[] = _.map(this.levels, (val, key) => {
+        return key;
+    });
 
     constructor(private control: GameControlsService) {
     }
 
     public ngOnInit(): void {
-        this.control.getLevelChanges().subscribe((levels) => {
-            this.options = levels;
+        this.control.getLevelChanges().subscribe((level) => {
+            this.current = level;
         });
     }
 

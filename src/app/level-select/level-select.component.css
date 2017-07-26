@@ -1,8 +1,34 @@
 .select-container {
     color: #FFFFFF;
+    font-size: 36px;
+    padding: 0.02em 0.2em;
+    border: 2px solid #FFFFFF;
+    border-radius: 0.5em;
+}
+
+.material-icons {
+    font-size: 3em;
+    font-size: 1.2em;
+    margin-left: 0.3em;
 }
 
 .select {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.options {
+    font-size: 16px;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:hover:not(.header) {
+    color: #DDD6F3;
+    cursor: pointer;
 }
