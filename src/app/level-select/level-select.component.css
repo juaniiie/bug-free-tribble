@@ -1,0 +1,8 @@
+.select-container {
+    color: #FFFFFF;
+}
+
+.select {
+    display: flex;
+    align-items: center;
+}

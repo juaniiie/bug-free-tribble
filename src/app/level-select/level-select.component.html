@@ -1,0 +1,18 @@
+<div class='select-container'>
+    <div class="select" (click)="toggleOptionsMenu()">
+        <span>{{current | uppercase}}</span>
+        <i class="material-icons">arrow_drop_down</i>
+    </div>
+    <ul *ngIf="showOptions" class="level-options">
+        <li>
+            <span class="title"></span>
+            <span>h</span>
+            <span>w</span>
+            <span><i class="material-icons">wb_sunny</i></span>
+        </li>
+        <li>
+            <span>Beginner</span>
+            <span></span>
+        </li>
+    </ul>
+</div>

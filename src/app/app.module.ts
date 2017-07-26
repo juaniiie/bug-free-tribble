@@ -9,6 +9,7 @@ import { GameControlsService } from './services/game-controls';
 import { CellColorDirective } from './board/row/color-directive/color.directive';
 import { TimerComponent } from './timer/timer.component';
 import { GameStateService } from './services/game-state';
+import { LevelSelectComponent } from './level-select/level-select.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GameStateService } from './services/game-state';
     BoardComponent,
     RowComponent,
     CellColorDirective,
-    TimerComponent
+    TimerComponent,
+    LevelSelectComponent
   ],
   imports: [
     BrowserModule
