@@ -15,8 +15,6 @@ export class GameComponent implements OnInit {
 
     public ngOnInit() {
         this.controls.getLevelChanges().subscribe((level) => {
-            console.log('levels', this.levels);
-            console.log('new level in game co', level);
             this.level = level;
         });
     }
