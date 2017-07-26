@@ -23,12 +23,29 @@
     font-size: 16px;
 }
 
+table {
+    border-spacing: 0;
+}
+
 td, th {
     text-align: left;
     padding: 8px;
 }
 
+th {
+    border-bottom: 1px solid #DDD6F3;
+}
+
 tr:hover:not(.header) {
     color: #DDD6F3;
     cursor: pointer;
+}
+
+input[type="text"] {
+    font-size: inherit;
+    font: inherit;
+    border: none;
+    color: #FFFFFF;
+    background: #DDD6F3;
+    width: 2em;
 }

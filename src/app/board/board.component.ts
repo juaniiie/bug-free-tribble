@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { Cell } from './row/cell/cell';
 import { GameStateService } from '../services/game-state';
 
@@ -7,7 +7,7 @@ import { GameStateService } from '../services/game-state';
     templateUrl: './board.component.html',
     styleUrls: ['./board.component.css']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
     @Input() private height: number;
     @Input() private width: number;
     @Input() private mines: number;
@@ -18,12 +18,21 @@ export class BoardComponent implements OnInit {
     }
 
     /**
-     * Initializes board
-     * @name ngOnInit
+     * Initializes board on input changes
+     * @name ngOnChanges
      */
-    public ngOnInit(): void {
-        this.generateBoard();
-        this.setMines();
+    public ngOnChanges(changes: SimpleChanges): void {
+        let h: SimpleChange = changes['height'];
+        let w: SimpleChange = changes['width'];
+        let m: SimpleChange = changes['mines'];
+
+        if (h.currentValue !== h.previousValue ||
+            w.currentValue !== w.previousValue ||
+            m.currentValue !== m.previousValue) {
+                this.board = [];
+                this.generateBoard();
+                this.setMines();
+            }
     }
 
     /**

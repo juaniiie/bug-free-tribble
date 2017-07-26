@@ -11,8 +11,8 @@ export class LevelSelectComponent implements OnInit {
     public current: string;
     public showOptions: boolean = false;
     public levels: any = this.control.getLevels();
-    public levelKeys: any[] = _.map(this.levels, (val, key) => {
-        return key;
+    public levelIterable: any[] = _.map(this.levels, (val) => {
+        return val;
     });
 
     constructor(private control: GameControlsService) {
@@ -28,4 +28,8 @@ export class LevelSelectComponent implements OnInit {
         this.showOptions = !this.showOptions;
     }
 
+    public handleLevelSelect(level): void {
+        this.control.setLevel(level);
+        this.current = level.title;
+    }
 }

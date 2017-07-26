@@ -10,11 +10,34 @@
                 <th>w</th>
                 <th>mines</th>
             </tr>
-            <tr *ngFor="let level of levelKeys">
-                <td>{{level}}</td>
-                <td>{{levels[level].height}}</td>
-                <td>{{levels[level].width}}</td>
-                <td>{{levels[level].mines}}</td>
+            <tr *ngFor="let level of levelIterable"
+                [ngClass]="{'selected': current === level.title}"
+                (click)="handleLevelSelect(level)">
+                <td>{{level.title}}</td>
+                <td>
+                    <span *ngIf="level.title !== 'custom'">{{level.height}}</span>
+                    <span *ngIf="level.title === 'custom'">
+                        <input type="text"
+                               [(ngModel)]="levels.custom.height"
+                               value="{{level.height}}"/>
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="level.title !== 'custom'">{{level.width}}</span>
+                    <span *ngIf="level.title === 'custom'">
+                        <input type="text"
+                               [(ngModel)]="levels.custom.width"
+                               value="{{level.width}}"/>
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf="level.title !== 'custom'">{{level.mines}}</span>
+                    <span *ngIf="level.title === 'custom'">
+                        <input type="text"
+                               [(ngModel)]="levels.custom.mines"
+                               value="{{level.mines}}"/>
+                    </span>
+                </td>
             </tr>
         </table>
 </div>

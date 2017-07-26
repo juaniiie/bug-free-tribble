@@ -36,20 +36,13 @@ export class GameControlsService {
         return this.levelChanges;
     }
 
-    public setLevel(level, height, width): void {
-        this.level = level;
-
-        if (level === 'custom') {
-            this.levels.custom.height = height;
-            this.levels.custom.width - width;
+    public setLevel(level): void {
+        this.level = level.title;
+        if (level.title === 'custom') {
+            this.levels.custom = level;
         }
-
         this.levelChanges.next(this.level);
     }
-
-    // public getCurrentLevel(): string {
-    //     return this.level;
-    // }
 
     public getLevels(): any {
         return this.levels;

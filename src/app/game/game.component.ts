@@ -9,14 +9,14 @@ import { GameControlsService } from '../services/game-controls';
 export class GameComponent implements OnInit {
     public level: string;
     public levels: any = this.controls.getLevels();
-    public size = 9;
-    public mines = 10;
 
     constructor(private controls: GameControlsService) {
     }
 
     public ngOnInit() {
         this.controls.getLevelChanges().subscribe((level) => {
+            console.log('levels', this.levels);
+            console.log('new level in game co', level);
             this.level = level;
         });
     }
