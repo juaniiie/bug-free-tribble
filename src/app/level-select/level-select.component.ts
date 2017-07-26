@@ -28,8 +28,10 @@ export class LevelSelectComponent implements OnInit {
         this.showOptions = !this.showOptions;
     }
 
-    public handleLevelSelect(level): void {
-        this.control.setLevel(level);
-        this.current = level.title;
+    public handleLevelSelect(): void {
+        console.log('current', this.current);
+        // let level = this.levels[this.current];
+        // this.control.setLevel(level);
+        // this.current = level.title;
     }
 }

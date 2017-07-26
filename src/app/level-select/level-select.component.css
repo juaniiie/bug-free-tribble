@@ -4,6 +4,7 @@
     padding: 0.02em 0.2em;
     border: 2px solid #FFFFFF;
     border-radius: 0.5em;
+    background-color: #faaca8;
 }
 
 .material-icons {
@@ -21,6 +22,10 @@
 
 .options {
     font-size: 16px;
+}
+
+.dropdown {
+    text-align: right;
 }
 
 table {
@@ -46,6 +51,23 @@ input[type="text"] {
     font: inherit;
     border: none;
     color: #FFFFFF;
-    background: #DDD6F3;
+    background: #faaca8;
+    border: 1px solid #FFFFFF;
     width: 2em;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    width: 50%;
+    margin-bottom: 5px;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    font-size: 0.5em;
+    border-radius: 0.60em;
+    background-color: #faaca8;
+    opacity: 0.8;
+}
+
+input[type="submit"]:hover {
+    opacity: 1;
 }
