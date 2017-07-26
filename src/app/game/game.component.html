@@ -1,18 +1,8 @@
 <div class="game-container">
-    <div class="controls">
-        <div><i class="material-icons">refresh</i>Restart</div>
-        <div><i class="material-icons">swap_vert</i>Level</div>
-    </div>
     <div class="board">
         <app-board [height]="level.height"
                    [width]="level.width"
                    [mines]="level.mines">
         </app-board>
-    </div>
-    <div class="controls">
-        <div>
-            <i class="material-icons">flag</i>Flag
-        </div>
-        <div><i class="material-icons">block</i>Un-flag</div>
     </div>
 </div>

@@ -1,0 +1,9 @@
+.timer-container {
+    color: #FFFFFF;
+    font-size: 36px;
+    padding: 0.02em 0.5em;
+    border: 2px solid #FFFFFF;
+    border-radius: 0.5em;
+    width: 3em;
+    text-align: center;
+}

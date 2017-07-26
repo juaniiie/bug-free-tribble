@@ -10,15 +10,15 @@
     width: 40%;
 }
 
-.controls {
+/* .controls {
     width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 
-.controls > div {
+/* .controls > div {
     display: flex;
     flex-direction: column;
     height: 8em;
@@ -40,4 +40,4 @@
 
 .controls i.material-icons {
     font-size: 4em;
-}
+} */
