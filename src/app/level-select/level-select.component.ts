@@ -29,9 +29,9 @@ export class LevelSelectComponent implements OnInit {
     }
 
     public handleLevelSelect(): void {
-        console.log('current', this.current);
-        // let level = this.levels[this.current];
-        // this.control.setLevel(level);
-        // this.current = level.title;
+        let level = this.levels[this.current];
+        this.control.setLevel(level);
+        this.current = level.title;
+        this.showOptions = false;
     }
 }

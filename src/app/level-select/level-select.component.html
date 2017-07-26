@@ -3,7 +3,8 @@
         <span>{{current}}</span>
         <i class="material-icons">keyboard_arrow_down</i>
     </div>
-    <div *ngIf="showOptions" class="dropdown">
+    <div *ngIf="showOptions"
+          class="dropdown">
         <table class="options">
             <tr class="header">
                 <th>level</th>
@@ -11,36 +12,36 @@
                 <th>w</th>
                 <th>mines</th>
             </tr>
-            <tr *ngFor="let level of levelIterable"
-                [ngClass]="{'selected': current === level.title}">
+            <tr *ngFor="let level of levelIterable">
                 <td>{{level.title}}</td>
                 <td>
                     <span *ngIf="level.title !== 'custom'">{{level.height}}</span>
                     <span *ngIf="level.title === 'custom'">
                         <input type="text"
-                            [(ngModel)]="levels.custom.height"
-                            value="{{level.height}}"/>
+                               [(ngModel)]="levels.custom.height"
+                               value="{{level.height}}"/>
                     </span>
                 </td>
                 <td>
                     <span *ngIf="level.title !== 'custom'">{{level.width}}</span>
                     <span *ngIf="level.title === 'custom'">
                         <input type="text"
-                            [(ngModel)]="levels.custom.width"
-                            value="{{level.width}}"/>
+                               [(ngModel)]="levels.custom.width"
+                               value="{{level.width}}"/>
                     </span>
                 </td>
                 <td>
                     <span *ngIf="level.title !== 'custom'">{{level.mines}}</span>
                     <span *ngIf="level.title === 'custom'">
                         <input type="text"
-                            [(ngModel)]="levels.custom.mines"
-                            value="{{level.mines}}"/>
+                               [(ngModel)]="levels.custom.mines"
+                               value="{{level.mines}}"/>
                     </span>
                 </td>
                 <td>
-                    <span>
-                        <input type="radio" [(ngModel)]="current"/>
+                    <span (click)="current = level.title">
+                        <i *ngIf="current !== level.title" class="material-icons">radio_button_unchecked</i>
+                        <i *ngIf="current === level.title" class="material-icons">radio_button_checked</i>
                     </span>
                 </td>
             </tr>
