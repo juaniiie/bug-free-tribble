@@ -16,7 +16,7 @@ This project is a remake of the classic minessweeper game. It was generated with
 
 1. Verify that you are running at least node 6.9.x and npm 3.x.x by running node -v and npm -v in a terminal/console window. Older versions produce errors, but newer versions are fine
 
-1. Install Angular CLI globally `npm install -g @angular/cli`
+1. Install Angular CLI globally: `npm install -g @angular/cli`
 
 1. Install npm packages: `npm install`
 

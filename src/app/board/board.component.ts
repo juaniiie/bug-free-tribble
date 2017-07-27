@@ -14,6 +14,8 @@ export class BoardComponent implements OnInit {
     private firstClick: boolean = false;
     private board: any[] = [];
     private minesLocations: Set<any> = new Set();
+    private cellsToWin: number = (this.height * this.width) - this.mines;
+    private cellsRevealed: number = 0;
 
     constructor(private game: GameStateService) {
     }
@@ -53,6 +55,9 @@ export class BoardComponent implements OnInit {
     public resetBoard(): void {
         this.board = [];
         this.firstClick = false;
+        this.minesLocations.clear();
+        this.cellsToWin = (this.height * this.width) - this.mines;
+        this.cellsRevealed = 0;
         this.generateBoard();
         this.setMines();
     }
@@ -68,8 +73,12 @@ export class BoardComponent implements OnInit {
             this.firstClick = true;
         }
         if (!cell.visited && !cell.isFlagged()) {
+            this.cellsRevealed++;
             cell.visit();
             cell.show();
+            if (this.cellsToWin === this.cellsRevealed) {
+                this.game.win();
+            }
             if (cell.isMine()) {
                 cell.markDoom();
                 this.revealAllMines();

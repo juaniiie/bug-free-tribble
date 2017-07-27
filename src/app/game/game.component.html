@@ -10,4 +10,7 @@
             <span>new game</span>
         </div>        
     </div>
+    <div class="game-message"
+         *ngIf="showMsg"
+         [@showMessage]="showMsg ? 'true': 'false'">{{message}}</div>
 </div>

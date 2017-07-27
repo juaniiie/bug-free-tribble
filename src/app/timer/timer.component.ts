@@ -22,7 +22,7 @@ export class TimerComponent implements OnInit {
                 this.stopTimer();
             } else if (state === 'in_progress') {
                 this.resetTimer();
-            } else if (state === 'end') {
+            } else if (state === 'end' || state === 'win') {
                 this.stopTimer();
             }
         });

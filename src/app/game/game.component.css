@@ -28,3 +28,12 @@
 .reset:hover {
     opacity: 1;
 }
+
+.game-message {
+    color: #824dd1;
+    font-size: 5em;
+    display: inline-block;
+    position: absolute;
+    bottom: 30%;
+    white-space: nowrap; 
+}
