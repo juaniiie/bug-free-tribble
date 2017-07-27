@@ -10,7 +10,7 @@ This project is a remake of the classic minessweeper game. It was generated with
 
 ## Usage
 
-1. Clone repo
+1. Clone or copy repo
 
 1. Navigate to repo directory
 
