@@ -2,13 +2,13 @@
 
 This project is a remake of the classic minessweeper game. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
-#Table of Contents
+# Table of Contents
 
 1. [Usage](#Usage)
 1. [Development Server](#server)
 1. [Running Unit Tests](#tests)
 
-##Usage
+## Usage
 
 1. Clone repo
 
