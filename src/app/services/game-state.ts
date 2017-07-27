@@ -28,4 +28,9 @@ export class GameStateService {
         this.gameStatus = 'reset';
         this.gameChange.next(this.gameStatus);
     }
+
+    public win(): void {
+        this.gameStatus ='win';
+        this.gameChange.next(this.gameStatus);
+    }
 }
