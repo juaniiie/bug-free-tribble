@@ -16,15 +16,18 @@ export class TimerComponent implements OnInit {
 
     public ngOnInit(): void {
         this.game.getChanges().subscribe((state) => {
-            if (state === 'in_progress') {
+            if (state === 'reset') {
                 this.second = '000';
+                this.totalSeconds = 0;
+                this.stopTimer();
+            } else if (state === 'in_progress') {
                 this.resetTimer();
             } else if (state === 'end') {
                 this.stopTimer();
             }
         });
     }
-
+    
     private resetTimer(): void {
         this.interval = setInterval(() => {
             this.totalSeconds++;

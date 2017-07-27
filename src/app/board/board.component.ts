@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, SimpleChange } from '@angular/core';
 import { Cell } from './row/cell/cell';
 import { GameStateService } from '../services/game-state';
 
@@ -7,7 +7,7 @@ import { GameStateService } from '../services/game-state';
     templateUrl: './board.component.html',
     styleUrls: ['./board.component.css']
 })
-export class BoardComponent {
+export class BoardComponent implements OnInit {
     @Input() private height: number;
     @Input() private width: number;
     @Input() private mines: number;
@@ -19,7 +19,19 @@ export class BoardComponent {
     }
 
     /**
-     * Initializes board on input changes
+     * Subscrives to game changes
+     * @name ngOnInit
+     */
+    public ngOnInit(): void {
+        this.game.getChanges().subscribe((state) => {
+            if (state === 'reset') {
+                this.resetBoard();
+            }
+        });
+    }
+
+    /**
+     * Executed when input changes are detected
      * @name ngOnChanges
      */
     public ngOnChanges(changes: SimpleChanges): void {
@@ -30,10 +42,19 @@ export class BoardComponent {
         if (h.currentValue !== h.previousValue ||
             w.currentValue !== w.previousValue ||
             m.currentValue !== m.previousValue) {
-                this.board = [];
-                this.generateBoard();
-                this.setMines();
+                this.resetBoard();
             }
+    }
+
+    /**
+     * Sets the board cells and mines
+     * @name resetBoard
+     */
+    public resetBoard(): void {
+        this.board = [];
+        this.firstClick = false;
+        this.generateBoard();
+        this.setMines();
     }
 
     /**

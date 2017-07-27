@@ -4,5 +4,10 @@
                    [width]="levels[level].width"
                    [mines]="levels[level].mines">
         </app-board>
+        <div *ngIf="showReset"
+             (click)="restartGame()"
+             class="reset">
+            <span>new game</span>
+        </div>        
     </div>
 </div>
