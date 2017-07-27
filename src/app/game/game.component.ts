@@ -45,7 +45,7 @@ export class GameComponent implements OnInit {
         });
         this.game.getChanges().subscribe((state) => {
             if (state !== null) {
-                this.showReset = state === 'end';
+                this.showReset = state === 'end' || state === 'win';
             }
             if (state === 'end') {
                 this.triggerMessage('You Lose :( !');

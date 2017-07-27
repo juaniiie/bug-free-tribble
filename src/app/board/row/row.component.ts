@@ -15,7 +15,7 @@ export class RowComponent {
     }
 
     public handleCellClick(event, cell): void {
-        if (this.game.getStatus() !== 'end') {
+        if (this.game.getStatus() !== 'end' && this.game.getStatus() !== 'win') {
             if (event.type === 'contextmenu' || event.which === 3 || event.which === 2) {
                 event.preventDefault();
                 cell.setFlag(!cell.isFlagged());
