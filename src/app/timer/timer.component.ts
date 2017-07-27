@@ -14,6 +14,10 @@ export class TimerComponent implements OnInit {
     constructor(private game: GameStateService) {
     }
 
+    /**
+     * Subscribes to game changes
+     * @name ngOnInit
+     */
     public ngOnInit(): void {
         this.game.getChanges().subscribe((state) => {
             if (state === 'reset') {
@@ -28,6 +32,10 @@ export class TimerComponent implements OnInit {
         });
     }
     
+    /**
+     * Starts timer
+     * @name resetTimer
+     */
     private resetTimer(): void {
         this.interval = setInterval(() => {
             this.totalSeconds++;
@@ -40,6 +48,10 @@ export class TimerComponent implements OnInit {
         }, 1000);
     }
 
+    /**
+     * Stops setInterval time, clears cache
+     * @name stopTimer
+     */
     private stopTimer(): void {
         clearInterval(this.interval);
     }

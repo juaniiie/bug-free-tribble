@@ -14,6 +14,12 @@ export class RowComponent {
     constructor(private game: GameStateService) {
     }
 
+    /**
+     * Handles cell left and right click events
+     * @name handleCellClick
+     * @param { Event } event 
+     * @param { Cell } cell 
+     */
     public handleCellClick(event, cell): void {
         if (this.game.getStatus() !== 'end' && this.game.getStatus() !== 'win') {
             if (event.type === 'contextmenu' || event.which === 3 || event.which === 2) {

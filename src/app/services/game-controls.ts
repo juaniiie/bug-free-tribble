@@ -32,10 +32,20 @@ export class GameControlsService {
     private level: string = 'beginner';
     private levelChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.level);
 
+    /**
+     * Returns levelChanges Behavior Subject
+     * @name getLevelChanges
+     * @returns { BehaviorSubject<any> }
+     */
     public getLevelChanges(): BehaviorSubject<any> {
         return this.levelChanges;
     }
 
+    /**
+     * Sets level value and broadcasts level change
+     * @name setLevel
+     * @param { any } level 
+     */
     public setLevel(level): void {
         this.level = level.title;
         if (level.title === 'custom') {
@@ -44,6 +54,11 @@ export class GameControlsService {
         this.levelChanges.next(this.level);
     }
 
+    /**
+     * Returns levels value
+     * @name getLevels
+     * @returns any
+     */
     public getLevels(): any {
         return this.levels;
     }

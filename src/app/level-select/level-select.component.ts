@@ -43,16 +43,28 @@ export class LevelSelectComponent implements OnInit {
     constructor(private control: GameControlsService) {
     }
 
+    /**
+     * Subscribes to levelChanges
+     * @name ngOnInit
+     */
     public ngOnInit(): void {
         this.control.getLevelChanges().subscribe((level) => {
             this.current = level;
         });
     }
 
+    /**
+     * Toggles showOptions value
+     * @name toggleOptionsMenu
+     */
     public toggleOptionsMenu(): void {
         this.showOptions = !this.showOptions;
     }
 
+    /**
+     * Sets current level in GameControlsService
+     * @name handleLevelSelect
+     */
     public handleLevelSelect(): void {
         let level = this.levels[this.current];
         this.control.setLevel(level);

@@ -39,7 +39,11 @@ export class GameComponent implements OnInit {
                 private game: GameStateService) {
     }
 
-    public ngOnInit() {
+    /**
+     * Subscribes to game level and status changes
+     * @name ngOnInit
+     */
+    public ngOnInit(): void {
         this.controls.getLevelChanges().subscribe((level) => {
             this.level = level;
         });
@@ -56,6 +60,10 @@ export class GameComponent implements OnInit {
         });
     }
 
+    /**
+     * Handles logic to show 'win' or 'lose' message
+     * @param {strin} msg
+     */
     public triggerMessage(msg): void {
         if (this.interval) {
             clearInterval(this.interval);
@@ -67,6 +75,10 @@ export class GameComponent implements OnInit {
         }, 1000);
     }
 
+    /**
+     * Calls game restart method,
+     * sets showReset to false 
+     */
     public restartGame(): void {
         this.game.restart();
         this.showReset = false;
