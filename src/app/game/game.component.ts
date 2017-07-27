@@ -57,6 +57,12 @@ export class GameComponent implements OnInit {
             if (state === 'win') {
                 this.triggerMessage('You Win :) !');
             }
+            if (state === 'reset') {
+                this.showReset = false;
+                this.showMsg = false;
+                this.message = '';
+                clearInterval(this.interval);
+            }
         });
     }
 

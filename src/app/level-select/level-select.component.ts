@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { GameControlsService } from '../services/game-controls';
+import { GameStateService } from '../services/game-state';
 import * as _ from 'lodash';
 
 @Component({
@@ -40,7 +41,8 @@ export class LevelSelectComponent implements OnInit {
         return val;
     });
 
-    constructor(private control: GameControlsService) {
+    constructor(private control: GameControlsService,
+                private game: GameStateService) {
     }
 
     /**
@@ -70,5 +72,6 @@ export class LevelSelectComponent implements OnInit {
         this.control.setLevel(level);
         this.current = level.title;
         this.showOptions = false;
+        this.game.restart();
     }
 }
