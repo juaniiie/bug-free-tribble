@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, SimpleChange, OnChanges } from '@angular/core';
 import { Cell } from './row/cell/cell';
 import { GameStateService } from '../services/game-state';
 
@@ -7,15 +7,15 @@ import { GameStateService } from '../services/game-state';
     templateUrl: './board.component.html',
     styleUrls: ['./board.component.css']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnChanges {
     @Input() private height: number;
     @Input() private width: number;
     @Input() private mines: number;
-    private firstClick: boolean = false;
+    private firstClick = false;
     private board: any[] = [];
     private minesLocations: Set<any> = new Set();
     private cellsToWin: number = (this.height * this.width) - this.mines;
-    private cellsRevealed: number = 0;
+    private cellsRevealed = 0;
 
     constructor(private game: GameStateService) {
     }
@@ -37,9 +37,9 @@ export class BoardComponent implements OnInit {
      * @name ngOnChanges
      */
     public ngOnChanges(changes: SimpleChanges): void {
-        let h: SimpleChange = changes['height'];
-        let w: SimpleChange = changes['width'];
-        let m: SimpleChange = changes['mines'];
+        const h: SimpleChange = changes['height'];
+        const w: SimpleChange = changes['width'];
+        const m: SimpleChange = changes['mines'];
 
         if (h.currentValue !== h.previousValue ||
             w.currentValue !== w.previousValue ||
@@ -84,7 +84,7 @@ export class BoardComponent implements OnInit {
                 this.revealAllMines();
                 this.game.end();
             } else if (cell.value === 0) {
-                let coords: any = cell.getCoords();
+                const coords: any = cell.getCoords();
                 this.modifyAdjacentCells(coords.x, coords.y, (c) => {
                     this.handleSelectCell(c);
                 });
@@ -155,7 +155,7 @@ export class BoardComponent implements OnInit {
      * @param { Function } cb
      */
     private modifyAdjacentCells(x, y, cb): void {
-        let rotation = this.getRotationSet(x, y);
+        const rotation = this.getRotationSet(x, y);
 
         rotation.forEach((cellCoords: any[]) => {
             const i = cellCoords[0];
@@ -197,7 +197,7 @@ export class BoardComponent implements OnInit {
         for (let i = 0; i < this.height; i++) {
             const row: any[] = [];
             for (let j = 0; j < this.width; j++) {
-                let cell = new Cell();
+                const cell = new Cell();
                 cell.setCoords(i, j);
                 row.push(cell);
             }

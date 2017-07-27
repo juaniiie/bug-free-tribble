@@ -1,13 +1,13 @@
 export class Cell {
-    public value: number = 0;
-    public visited: boolean = false;
-    public isDoom: boolean = false;
+    public value = 0;
+    public visited = false;
+    public isDoom = false;
     private coordinates = {
         x: 0,
         y: 0
-    }
-    private visible: boolean = false;
-    private flagged: boolean = false;
+    };
+    private visible = false;
+    private flagged = false;
 
     /**
      * Sets visited value to true
@@ -101,7 +101,7 @@ export class Cell {
      * Sets value of flagged
      * @name setFlag
      */
-    public setFlag(val: boolean):void {
+    public setFlag(val: boolean): void {
         this.flagged = val;
     }
 

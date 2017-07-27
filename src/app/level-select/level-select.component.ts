@@ -34,7 +34,7 @@ import * as _ from 'lodash';
 })
 export class LevelSelectComponent implements OnInit {
     public current: string;
-    public showOptions: boolean = false;
+    public showOptions = false;
     public levels: any = this.control.getLevels();
     public levelIterable: any[] = _.map(this.levels, (val) => {
         return val;
@@ -66,7 +66,7 @@ export class LevelSelectComponent implements OnInit {
      * @name handleLevelSelect
      */
     public handleLevelSelect(): void {
-        let level = this.levels[this.current];
+        const level = this.levels[this.current];
         this.control.setLevel(level);
         this.current = level.title;
         this.showOptions = false;

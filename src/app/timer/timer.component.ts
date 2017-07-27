@@ -7,8 +7,8 @@ import { GameStateService } from '../services/game-state';
     styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
-    public second: any = '000';
-    public totalSeconds: number = 0;
+    public second = '000';
+    public totalSeconds = 0;
     public interval: any;
 
     constructor(private game: GameStateService) {
@@ -40,10 +40,10 @@ export class TimerComponent implements OnInit {
         this.interval = setInterval(() => {
             this.totalSeconds++;
             if (this.totalSeconds === 999) {
-                this.stopTimer()
+                this.stopTimer();
             } else {
-                let s = this.totalSeconds.toString()
-                this.second = s.length === 1 ?`00${s}` : s.length === 2 ? `0${s}` : `${s}`;
+                const s = this.totalSeconds.toString();
+                this.second = s.length === 1 ? `00${s}` : s.length === 2 ? `0${s}` : `${s}`;
             }
         }, 1000);
     }

@@ -17,8 +17,8 @@ export class RowComponent {
     /**
      * Handles cell left and right click events
      * @name handleCellClick
-     * @param { Event } event 
-     * @param { Cell } cell 
+     * @param { Event } event
+     * @param { Cell } cell
      */
     public handleCellClick(event, cell): void {
         if (this.game.getStatus() !== 'end' && this.game.getStatus() !== 'win') {
@@ -29,7 +29,7 @@ export class RowComponent {
                 if (!cell.isFlagged()) {
                     this.onSelectCell.emit(cell);
                 }
-            }  
-        }  
+            }
+        }
     }
 }

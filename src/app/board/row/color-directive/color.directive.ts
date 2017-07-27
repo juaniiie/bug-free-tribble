@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
     selector: '[cellColor]'
 })
 export class CellColorDirective implements OnInit {
-    @Input() public value: number = 0;
+    @Input() public value = 0;
     private colorRange: string[] = [
         '#1FFF9C',
         '#1F54FF',
@@ -25,7 +25,7 @@ export class CellColorDirective implements OnInit {
      * @name ngOnInit
      */
     ngOnInit(): void {
-        let element: HTMLElement = this.elementRef.nativeElement;
+        const element: HTMLElement = this.elementRef.nativeElement;
         if (this.value === -1) {
             element.style.color = '#FF6347';
         } else {

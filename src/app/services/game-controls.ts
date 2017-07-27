@@ -28,8 +28,8 @@ export class GameControlsService {
             width: 30,
             mines: 145
         }
-    }
-    private level: string = 'beginner';
+    };
+    private level = 'beginner';
     private levelChanges: BehaviorSubject<any> = new BehaviorSubject<any>(this.level);
 
     /**
@@ -44,7 +44,7 @@ export class GameControlsService {
     /**
      * Sets level value and broadcasts level change
      * @name setLevel
-     * @param { any } level 
+     * @param { any } level
      */
     public setLevel(level): void {
         this.level = level.title;

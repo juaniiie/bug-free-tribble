@@ -29,9 +29,9 @@ import { trigger, state, style, animate, transition, group } from '@angular/anim
 export class GameComponent implements OnInit {
     public level: string;
     public levels: any = this.controls.getLevels();
-    public showReset: boolean = false;
-    public showMsg: boolean = false;
-    public message: string = '';
+    public showReset = false;
+    public showMsg = false;
+    public message = '';
     private interval: any;
 
 
@@ -62,6 +62,7 @@ export class GameComponent implements OnInit {
 
     /**
      * Handles logic to show 'win' or 'lose' message
+     * @name triggerMessage
      * @param {strin} msg
      */
     public triggerMessage(msg): void {
@@ -77,7 +78,8 @@ export class GameComponent implements OnInit {
 
     /**
      * Calls game restart method,
-     * sets showReset to false 
+     * sets showReset to false
+     * @name restartGame
      */
     public restartGame(): void {
         this.game.restart();

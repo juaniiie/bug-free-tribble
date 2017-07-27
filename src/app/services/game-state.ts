@@ -12,7 +12,7 @@ export class GameStateService {
      * @returns { BehaviorSubject<string>}
      */
     public getChanges(): BehaviorSubject<string> {
-        return this.gameChange
+        return this.gameChange;
     }
 
     /**
@@ -56,7 +56,7 @@ export class GameStateService {
      * @name win
      */
     public win(): void {
-        this.gameStatus ='win';
+        this.gameStatus = 'win';
         this.gameChange.next(this.gameStatus);
     }
 }
