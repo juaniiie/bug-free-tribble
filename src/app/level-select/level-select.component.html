@@ -12,7 +12,7 @@
                 <th>w</th>
                 <th>mines</th>
             </tr>
-            <tr *ngFor="let level of levelIterable">
+            <tr *ngFor="let level of levelIterable" (click)="current = level.title">
                 <td>{{level.title}}</td>
                 <td>
                     <span *ngIf="level.title !== 'custom'">{{level.height}}</span>
@@ -39,7 +39,7 @@
                     </span>
                 </td>
                 <td>
-                    <span (click)="current = level.title">
+                    <span>
                         <i *ngIf="current !== level.title" class="material-icons">radio_button_unchecked</i>
                         <i *ngIf="current === level.title" class="material-icons">radio_button_checked</i>
                     </span>
